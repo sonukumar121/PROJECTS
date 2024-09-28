@@ -1,0 +1,252 @@
+ #include<stdio.h>
+ #include<stdlib.h>
+ struct node
+ {
+ 	char name[20];
+ 	int class;
+ 	int rollno;
+ 	char course[30];
+ 	struct node *next;
+ }*start=NULL;
+ 
+ 
+ void studentdetails()
+ {
+   struct node *tmp,*tmp1;
+   tmp=(struct node*)malloc(sizeof(struct node));
+   tmp->next=NULL;
+   tmp1=start;
+   printf("\nEnter the Name= ");
+   scanf("%s",&tmp->name);
+   printf("\nEnter the class= ");
+   scanf("%d",&tmp->class);
+   printf("\nEnter the Roll.no= ");
+   scanf("%d",&tmp->rollno);
+   printf("\nEnter your course= ");
+   scanf("%s",&tmp->course);
+   if(start==NULL)
+   {
+   	start=tmp;
+   }
+   else
+   {
+   
+   tmp1=start;
+while(tmp1->next!=NULL)
+{
+	tmp1=tmp1->next;
+	
+}
+tmp1->next=tmp;
+tmp1=tmp;
+}
+
+   	
+ }
+ void studentview()
+ {
+ 	struct node *tmp,*tmp1;
+  tmp1=start;
+  
+  while(tmp1->next!=NULL)
+  {
+  	
+             printf("\n              Name        class      rollno      course");
+             printf("\n--------------------------------------------------------------------------------------");
+             printf("\n1              %s           %d           %d         %s",             tmp1->name     ,     tmp1->class    ,     tmp1->rollno    ,   tmp1->course);
+             tmp1=tmp1->next;
+     
+  }
+            printf("\n              Name         class      rollno      course");
+             printf("\n--------------------------------------------------------------------------------------");
+             printf("\n              %s           %d           %d         %s",             tmp1->name     ,     tmp1->class   ,     tmp1->rollno     ,    tmp1->course);
+    
+
+ }
+void studentedit()
+{
+	int choice=1;
+	struct node *tmp,*tmp1;
+	tmp1=start;
+	while(choice)
+	{
+		printf("\nChoose your Editing option\n1>Name\n2>class\n3>rollno\n4>course\n5>Exit\n");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+		case 1:
+			printf("\nEnter  Name=  ");
+			scanf("%s",&tmp1->name);
+			printf("\nName change Sucessfully");
+			break;
+
+		case 2:
+			printf("\nEnter  clas=  ");
+			scanf("%d",&tmp1->class);
+			printf("\nClass change Sucessfully");
+			break;
+
+		case 3:
+			printf("\nEnter  rollno=  ");
+			scanf("%s",&tmp1->rollno);
+			printf("\nRoll.no change Sucessfully");
+			break;
+
+		case 4:
+			printf("\nEnter  course=  ");
+			scanf("%s",&tmp1->course);
+			printf("\nCourse change Sucessfully");
+			break;
+
+		case 5:
+			printf("1 for contine 0 for exit");
+			scanf("%d",&choice);
+			
+
+
+
+		}
+
+
+	}
+}
+
+studentcancel()
+{
+	struct node *tmp1,*tmp2;
+	int n;
+	printf("\nEnter your roll number= ");
+	scanf("%d",&n);
+
+	tmp1=start;
+	tmp2=start;
+	while(tmp1->rollno!=n)
+	{
+
+		tmp1=tmp1->next;
+	}
+
+	while(tmp2->next!=tmp1)
+	{
+		tmp1=tmp1->next;
+	}
+	tmp2->next=0;
+	printf("\nstudent Addmission Canceled Sucessfully");
+
+}
+
+void findstudent()
+{
+    int choice;
+    int f1;
+    char f2[20];
+    char f3[30];
+    
+   struct node *tmp,*tmp1;
+   tmp1=start;
+   while(1)
+   {
+   printf("\n1>Find student by Roll.no\n2>Find student by Name\n3>Find student by Course Name\n");
+   printf("\nEnter your choice= ");
+   scanf("%d",&choice);
+   switch(choice)
+   {
+       case 1:printf("\nEnter the student Roll.no= ");
+   scanf("%d",&f1);
+   while(tmp1->rollno!=f1)
+   {
+     tmp1=tmp1->next;  
+   }
+   printf("\n              Name         class      rollno      course");
+             printf("\n--------------------------------------------------------------------------------------");
+             printf("\n              %s           %d           %d         %s",             tmp1->name     ,     tmp1->class   ,     tmp1->rollno     ,    tmp1->course);
+       break;
+       
+       
+       case 2:printf("\nEnter the student Name=  ");
+   scanf("%s",&f2);
+   tmp1=start;
+   while(tmp1->name!=f2)
+   {
+     tmp1=tmp1->next;  
+   }
+   printf("\n              Name         class      rollno      course");
+             printf("\n--------------------------------------------------------------------------------------");
+             printf("\n              %s           %d           %d         %s",             tmp1->name     ,     tmp1->class   ,     tmp1->rollno     ,    tmp1->course);
+       break;
+       
+       
+       case 3:printf("\nEnter the student Course Name= ");
+   scanf("%s",&f3);
+   tmp1=start;
+   while(tmp1->course!=f3)
+   {
+     tmp1=tmp1->next;  
+   }
+   printf("\n              Name         class      rollno      course");
+             printf("\n--------------------------------------------------------------------------------------");
+             printf("\n              %s           %d           %d         %s",             tmp1->name     ,     tmp1->class   ,     tmp1->rollno     ,    tmp1->course);
+       break;
+   
+   }
+   }
+   
+}
+void studentcount()
+{
+    int c=0;
+    struct node *tmp,*tmp1;
+    tmp1=start;
+    while(tmp1->next!=NULL)
+    {
+       c=c+1; 
+       tmp1=tmp1->next;
+    }
+    c=c+1;
+    printf("No.of students= %d",c);
+}
+
+ int main()
+ 
+ {
+ 	int choice;
+ while(1)
+ {
+ 
+ printf("\n____________*WELCOME TO STUDENT DASHBOARD*__________");
+  printf("\nStudent Dashboard Systems:\n1.Add Student Details\n2.View Students details\n3.Edit Student Details\n4>Cancel Student Admissions\n5>Find Student Details\n6.Exit");
+  printf("\nEnter the choice= ");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+  	case 1:studentdetails();
+  	break;
+  	
+  	case 2:studentview();
+  	break;
+  	
+  	case 3:studentedit();
+  	break;
+  	
+  	case 4:studentcancel();
+  	break;
+  	
+  	case 5:findstudent();
+  	break;
+  	
+  	case 6:studentcount();
+  	break;
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  }
+ }
+ return 0;
+ }
+ 
+ 
+ 
