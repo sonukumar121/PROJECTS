@@ -1,0 +1,73 @@
+//create,Game of rock,paper,scissors.
+#include<stdio.h>
+int main()
+{
+    int player1,player2,h,s[100];
+    printf("Enter your name= ");
+    scanf("%s",s);
+    printf("hlw=%s!,welcome to in rock paper sciisors game",s);
+    printf("\nEnter your choice=");
+     printf("\n1>rock\n 2>paper\n 3>scissors\n");
+    while(1)
+    {
+        int choice;
+          printf("enter your choice= ");
+          scanf("%d",&choice);
+      switch(choice) 
+      
+      {
+                
+          case 1: printf("you choose->Rock\n");
+                  printf("computer choose paper\n");
+                  printf("you lost try again\n");
+                  break; 
+
+
+          case 2:printf("you choose->paper  \n");
+                 printf("computer choose scissors\n");
+                 printf("you lost try again\n");
+                 break;
+
+
+          case 3:printf("you choose->scissors\n");
+                 printf("computer choose paper\n");
+                 printf("you win\n");
+                 break;
+                 
+          default:printf("invalid choice");
+                 
+                
+         
+        }          
+      }
+    }
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
