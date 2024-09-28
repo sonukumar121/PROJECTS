@@ -1,0 +1,117 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+    int ch,ch2,lit,oil=1500,oilp=65,rupess,litm,i,choice,rupe,nrate,nstoreo,earning=0;
+	printf("_______________*WELCOME TO OUR FUEL STATION PROGRAM*_____________");
+	start:
+	while(1)
+	{
+    printf("\n1>Choose oil        2>Rupees       3>Main       4>Exit");
+    printf("\nEnter the choice= ");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1:
+        {printf("choose oil\n");
+               printf("1>PETROL\n2>DIESEL\n3>KEROSIN OIL");
+               scanf("%d",&ch);
+               if(ch==1 || ch==2 || ch==3)
+          {
+               printf("Enter the amount of litres= ");
+               scanf("%d",&lit);
+               oil=oil-lit;
+               for(i=1;i<=lit;i++)
+               {
+                 printf("\n%d",i);  
+               }
+               printf("\nlitres=%d Oil get Sucessfully",lit);
+               rupess=lit*oilp;
+               earning=earning+rupess;
+               printf("\nyour amount is=%d",rupess);
+               rupess=0;
+               break;
+          }
+          
+        }  
+          case 2:
+        {  printf("Enter the rupess= ");
+          scanf("%d",&rupe);
+          earning=earning+rupe;
+          rupess=rupe;
+          for(i=1;i<=rupe;i++)
+          {
+              printf("\nRs=%d",i);
+              
+          }
+          litm=rupess/oilp;
+         printf("Total litres are=%d",litm); 
+         oil=oil-litm;
+         
+         rupess=0;
+         break;
+        }         
+         
+         case 3:
+         
+  {      while(1)
+                {
+                    printf("__________*MAIN SERVICE SETTINGS*_______ ");
+                    printf("1>Rate     2>Total litres   3>Remaining litres    4>Earning   5>Exit");
+                    scanf("%d",&ch2);
+                    if(ch2==1)
+                    {
+                        printf("Current rate of oil is= %d",oilp);
+                        printf("\nEnter the new Rate of oil= ");
+                        scanf("%d",&nrate);
+                        oilp=nrate;
+                        printf("\nthe new Rate oil=%d",oilp);
+                    }
+                    else if(ch2==2)
+                    
+                    {
+                        printf("\ncurrent total litres oil is= %d",oil);
+                        printf("\nhow many litres you want to store=  " );
+                        scanf("%d",&nstoreo);
+                        oil=oil+nstoreo;
+                        printf("\noil stored sucessfully");
+                    
+                    }
+                    
+                   else if(ch2==3)
+                   {
+                       printf("\nRemaing litres of oil=%d",oil);
+                   }
+                   
+                   
+                   else if(ch2==4)
+                   {
+                       printf("\nyour total earning is= %d",earning);
+                   }
+                   
+                   else if(ch2==5)
+                   {
+                      goto start;
+                   }
+                    
+                       
+                        
+         }
+            
+            
+    }      
+ 
+            case 4: exit(1);
+             default:printf("Invalid! Choice and Try again");
+    }       
+        
+
+	
+
+	} 
+	return 0;
+}
+                
+                 
+ 
