@@ -1,0 +1,165 @@
+ #include<stdio.h>
+ #include<stdlib.h>
+ struct node
+ {
+ 	char name[20];
+ 	int seat;
+ 	char source[20];
+ 	char destination[20];
+ 	struct node *next;
+ }*start=NULL;
+ 
+ 
+ void book()
+ {
+   struct node *tmp,*tmp1;
+   tmp=(struct node*)malloc(sizeof(struct node));
+   tmp->next=NULL;
+   tmp1=start;
+   printf("\nEnter the name= ");
+   scanf("%s",&tmp->name);
+   printf("\nEnter the seat.no= ");
+   scanf("%d",&tmp->seat);
+   printf("\nEnter the source= ");
+   scanf("%s",&tmp->source);
+   printf("\nEnter your destination= ");
+   scanf("%s",&tmp->destination);
+   if(start==NULL)
+   {
+   	start=tmp;
+   }
+   else
+   {
+   
+   tmp1=start;
+while(tmp1->next!=NULL)
+{
+	tmp1=tmp1->next;
+	
+}
+tmp1->next=tmp;
+tmp1=tmp;
+}
+
+   	
+ }
+ void view()
+ {
+ 	struct node *tmp,*tmp1;
+  tmp1=start;
+  
+  while(tmp1->next!=NULL)
+  {
+  	
+             printf("\n              Name        Seat.no      Source     Destination");
+             printf("\n--------------------------------------------------------------------------------------");
+             printf("\n1              %s           %d           %s         %s",             tmp1->name     ,     tmp1->seat    ,     tmp1->source    ,   tmp1->destination);
+             tmp1=tmp1->next;
+     
+  }
+            printf("\n              Name         Seat.no      Source     Destination");
+             printf("\n--------------------------------------------------------------------------------------");
+             printf("\n              %s           %d           %s         %s",             tmp1->name     ,     tmp1->seat   ,     tmp1->source     ,    tmp1->destination);
+    
+
+ }
+ void edit()
+{
+	int choice=1;
+	struct node *tmp,*tmp1;
+	tmp1=start;
+	while(choice)
+	{
+		printf("\nChoose your Editing option\n1>Name\n2>Seat.no\n3>Source\n4>Destination\n5>Exit\n");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+		case 1:
+			printf("\nEnter  Name=  ");
+			scanf("%s",&tmp1->name);
+			break;
+
+		case 2:
+			printf("\nEnter  new seat.no=  ");
+			scanf("%d",&tmp1->seat);
+			break;
+
+		case 3:
+			printf("\nEnter  source=  ");
+			scanf("%s",&tmp1->source);
+			break;
+
+		case 4:
+			printf("\nEnter  Destiniation=  ");
+			scanf("%s",&tmp1->destination);
+			break;
+
+		case 5:
+			printf("1 for contine 0 for exit");
+			scanf("%d",&choice);
+
+
+
+		}
+
+
+	}
+}
+
+void cancel()
+{
+	struct node *tmp1,*tmp2;
+	int n;
+	printf("\nEnter your seat number= ");
+	scanf("%d",&n);
+
+	tmp1=start;
+	tmp2=start;
+	while(tmp1->seat!=n)
+	{
+
+		tmp1=tmp1->next;
+	}
+
+	while(tmp2->next!=tmp1)
+	{
+		tmp1=tmp1->next;
+	}
+	tmp2->next=0;
+	printf("\nTicket Canceled Sucessfully");
+
+}
+
+ int main()
+ 
+ {
+ 	int choice;
+ while(1)
+ {
+ 
+ printf("\n____________*WELCOME TO KOTLIN TRAVELERS*__________");
+  printf("\nKotlin Bus Booking Systems:\n1.Book a Seat\n2.View Reseravtions\n3.Edit a Reservation\n4>Cancel your ticket\n5.Exit");
+  printf("\nEnter the choice= ");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+  	case 1:book();
+  	break;
+  	
+  	case 2:view();
+  	break;
+  	
+  	case 3:edit();
+  	break;
+  	
+  	case 4:cancel();
+  	break;
+  	
+  	
+  }
+ }
+ return 0;
+ }
+ 
+ 
+ 
