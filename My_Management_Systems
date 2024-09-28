@@ -1,0 +1,162 @@
+/*LOGIN SYSTEM
+HOSPITAL MANAGEMENT SYSTEMS
+CAR PARKING SYSTEMS
+RESTURANT SYSTEMS
+LIBRARY MANAGEMENT SYSTEM
+CALANDER
+ONLINE FOOD ORDER
+TO-DO-LIST
+MOBILE ORDER SYSTEM*/
+
+
+
+#include<stdio.h>
+struct login
+{
+  char name[30];
+  char email[50];
+   long int number[12];
+  int otp[20];
+  char pas[30];
+  struct login *next;
+}*start=NULL;
+
+void signup()
+{
+    int x,otp,ch,c;
+    int choice=1;
+    
+  struct login *tmp,*tmp1;
+  tmp=(struct login*)malloc(sizeof(struct login));
+  tmp->next=0;
+  start=tmp;
+  tmp1=start;
+  while(choice)
+    {
+  
+  printf("\nEnter your Name= ");
+  scanf("%s",&tmp1->name);
+  printf("\nEnter your Email= ");
+  scanf("%s",&tmp1->email);
+  printf("\nEnter your Mobile Number= ");
+  scanf("%ld",&tmp1->number);
+  printf("\nCreate Password= ");
+  scanf("%s",&tmp1->pas);
+  printf("\NPassword Created Sucessfully");
+  send:
+  printf("\n---|Send OTP|---");
+  printf("\nClick 1 for Send otp\nClick 0 for Edit number\n");
+  scanf("%d",&ch);
+  switch(ch)
+  {
+      case 1:printf("\nOTP Send Sucessfully");
+      printf("\nEnter OTP (your OTP is= 12345)");
+      
+      scanf("%d",&otp);
+      if(otp==12345)
+      {
+          printf("\nOTP Verified Sucessfully");
+          printf("\n1 for continue 0 for exit");
+          scanf("%d",&choice);
+          
+          
+          
+      }
+      else
+      {
+          printf("\nSorry! wrong OTP and Try! again");
+          goto send;
+      }
+      break;
+      
+      case 0:printf("\nEdit your number");
+      printf("%ld",tmp1->number);
+             printf("\nEnter New Number");
+             scanf("%ld",&tmp1->number);
+             printf("\nYour New Number is=%ld",tmp1->number);
+             break;
+        
+      
+  }
+  
+  
+   }
+}
+
+void login()
+{
+    char e[30];
+    char pa[30];
+    struct login*tmp,*tmp1;
+    tmp1=start;
+    ema:
+    printf("\nEnter your Email-id:  ");
+    scanf("%s",&e);
+    printf("\nEmail-id Verified");
+    /*if(e==tmp1->email)
+    {
+      printf("\nEmail-id Verified");  
+    }
+    else
+    {
+        printf("\nSorry! Wrong Email-id Please Enter the Correct Email-id");
+        goto ema;
+    }
+    */
+    check:
+    printf("\nEnter Your Password: ");
+    scanf("%s",&pa);
+    printf("\nLogin Sucessfully");
+   /* if(tmp1->pas==pa)
+    {
+        printf("\nLogin Sucessfully");
+    }
+    else
+    {
+       printf("\nSorry! Wrong Password Please Enter the Correct Password");
+        goto check;
+    }*/
+    
+    //view
+    tmp1=start;
+    while(tmp1->next!=0)
+    {
+      printf("\n%s %s %ld %d %s",tmp1->name,tmp1->number,tmp1->email,tmp1->otp,tmp1->pas);
+      tmp1=tmp1->next;  
+    }
+    printf("\n%s %s %ld %d %s",tmp1->name,tmp1->number,tmp1->email,tmp1->otp,tmp1->pas);
+    
+    
+    
+}
+
+int main()
+{
+    int choice;
+    while(1)
+    {
+        
+    printf("\n---------Login System-------");
+    printf("\n1>Sign up\n2>Login\n3>Edit\n4>Delete Account\n");
+    printf("\nEnter your choice= ");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        
+        
+        case 1: signup();
+                break;
+                
+        case 2:login();
+                break;
+                
+        case 3:edit();
+        break;
+        
+        case 4:view();
+        break;
+                
+    }
+   
+  }
+}
