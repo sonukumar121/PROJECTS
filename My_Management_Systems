@@ -130,6 +130,41 @@ void login()
     
 }
 
+void edit()
+{
+    int choose;
+    struct node *tmp1;
+    tmp1=start;
+    printf("\n1>Name\n2>Email-id\n3>Mobile number\n4>Password");
+    scanf("%d",&choose);
+    while(1)
+    {
+      switch(choose)
+      {
+        case 1: printf("\nEdit your Name: ");
+                scanf("%d",&tmp1->name);
+                printf("\nYour name is Sucessfully updated:",tmp1->name);
+                break;
+                
+        case 2:printf("\nEdit your Email-id: ");
+               scanf("%d",&tmp1->email);
+               printf("\nYour Emai-id Is Sucessfully updated");
+               break;
+        case 3:  printf("\nEdit your Mobile number: ");
+                 scanf("%d",&tmp1->number);
+                 printf("\nYour Mobile Number Is Sucessfully updated");
+                 break;
+        
+        case 4:printf("\nEdit your password: ");
+               scanf("%d",&tmp1->password);
+               printf("\nYour password Is Sucessfully updated");
+               break;
+               
+      }
+    }
+}
+
+void 
 int main()
 {
     int choice;
@@ -154,7 +189,7 @@ int main()
         break;
         
         case 4:view();
-        break;
+        break;*/
                 
     }
    
