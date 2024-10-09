@@ -1,4 +1,4 @@
-/*LOGIN SYSTEM
+/*LOGIN SYSTEM -> Done
 HOSPITAL MANAGEMENT SYSTEMS
 CAR PARKING SYSTEMS
 RESTURANT SYSTEMS
@@ -11,6 +11,7 @@ MOBILE ORDER SYSTEM*/
 
 
 #include<stdio.h>
+int c=3;
 struct login
 {
   char name[30];
@@ -113,7 +114,13 @@ void login()
     }
     else
     {
-       printf("\nSorry! Wrong Password Please Enter the Correct Password");
+        c=c-1;
+        if(c==0)
+        {
+            printf("\nSorry you have attempts many attempts try next day");
+            exit(1);
+        }
+       printf("\nSorry! Wrong Password Please Enter the Correct Password you have left only %d attempts",c);
         goto check;
     }
     
@@ -176,7 +183,7 @@ void view()
   printf("\nEnter your password:");
   scanf("%s",&pasword);
   printf("\n1>Name:\n2>email\n3>number\n4>pasword:");
-  printf("%s %s %d %s",tmp1->name,tmp1->email,tmp1->number,tmp1->pas);
+  printf("%s %s %ld %s",tmp1->name,tmp1->email,tmp1->number,tmp1->pas);
   
 }
 int main()
@@ -186,7 +193,7 @@ int main()
     {
         
     printf("\n---------Login System-------");
-    printf("\n1>Sign up\n2>Login\n3>Edit\n4>Delete Account\n");
+    printf("\n1>Sign up\n2>Login\n3>Edit\n4>View\n");
     printf("\nEnter your choice= ");
     scanf("%d",&choice);
     switch(choice)
