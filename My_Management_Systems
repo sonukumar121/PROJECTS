@@ -11,7 +11,8 @@ MOBILE ORDER SYSTEM*/
 
 
 #include<stdio.h>
-int c=3;
+int c=3,s=3;
+
 struct login
 {
   char name[30];
@@ -100,7 +101,12 @@ void login()
     }
     else
     {
-        printf("\nSorry! Wrong Email-id Please Enter the Correct Email-id");
+        s=s-1;
+        if(s==0)
+        {
+            printf("\nSorry you have do many attempts try next day ");
+        }
+        printf("\nSorry! Wrong Email-id Please Enter the Correct Email-id you have left only %d attempts",s);
         goto ema;
     }
     
@@ -117,7 +123,7 @@ void login()
         c=c-1;
         if(c==0)
         {
-            printf("\nSorry you have attempts many attempts try next day");
+            printf("\nSorry you have do  many attempts attempts try next day");
             exit(1);
         }
        printf("\nSorry! Wrong Password Please Enter the Correct Password you have left only %d attempts",c);
