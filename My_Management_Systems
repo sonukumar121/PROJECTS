@@ -85,15 +85,15 @@ void signup()
 
 void login()
 {
-    char e[30];
+     char e[30];
     char pa[30];
     struct login*tmp,*tmp1;
     tmp1=start;
     ema:
     printf("\nEnter your Email-id:  ");
     scanf("%s",&e);
-    printf("\nEmail-id Verified");
-    /*if(e==tmp1->email)
+   // printf("\nEmail-id Verified");
+    if(strcmp(e,tmp1->email)==0)
     {
       printf("\nEmail-id Verified");  
     }
@@ -102,12 +102,12 @@ void login()
         printf("\nSorry! Wrong Email-id Please Enter the Correct Email-id");
         goto ema;
     }
-    */
+    
     check:
     printf("\nEnter Your Password: ");
     scanf("%s",&pa);
-    printf("\nLogin Sucessfully");
-   /* if(tmp1->pas==pa)
+    
+    if(strcmp(pa,tmp1->pas)==0)
     {
         printf("\nLogin Sucessfully");
     }
@@ -115,16 +115,16 @@ void login()
     {
        printf("\nSorry! Wrong Password Please Enter the Correct Password");
         goto check;
-    }*/
+    }
     
     //view
     tmp1=start;
     while(tmp1->next!=0)
     {
-      printf("\n%s %s %ld %d %s",tmp1->name,tmp1->number,tmp1->email,tmp1->otp,tmp1->pas);
+      printf("\n%s %s %ld %d %s",tmp1->name,tmp1->email,tmp1->number,tmp1->otp,tmp1->pas);
       tmp1=tmp1->next;  
     }
-    printf("\n%s %s %ld %d %s",tmp1->name,tmp1->number,tmp1->email,tmp1->otp,tmp1->pas);
+    printf("\n%s %s %ld %d %s",tmp1->name,tmp1->email,tmp1->number,tmp1->otp,tmp1->pas);
     
     
     
@@ -133,7 +133,7 @@ void login()
 void edit()
 {
     int choose;
-    struct node *tmp1;
+    struct login *tmp1;
     tmp1=start;
     printf("\n1>Name\n2>Email-id\n3>Mobile number\n4>Password");
     scanf("%d",&choose);
@@ -142,12 +142,13 @@ void edit()
       switch(choose)
       {
         case 1: printf("\nEdit your Name: ");
-                scanf("%d",&tmp1->name);
-                printf("\nYour name is Sucessfully updated:",tmp1->name);
+                scanf("%s",&tmp1->name);
+                
+                printf("\nYour name is Sucessfully updated:");
                 break;
                 
         case 2:printf("\nEdit your Email-id: ");
-               scanf("%d",&tmp1->email);
+               scanf("%s",&tmp1->email);
                printf("\nYour Emai-id Is Sucessfully updated");
                break;
         case 3:  printf("\nEdit your Mobile number: ");
@@ -156,7 +157,7 @@ void edit()
                  break;
         
         case 4:printf("\nEdit your password: ");
-               scanf("%d",&tmp1->password);
+               scanf("%s",&tmp1->pas);
                printf("\nYour password Is Sucessfully updated");
                break;
                
@@ -164,7 +165,20 @@ void edit()
     }
 }
 
-void 
+void view()
+{
+  char nam[30]; 
+  char pasword[30];
+  struct login *tmp1;
+  tmp1=start;
+  printf("\nEnter your profile name or password:");
+  scanf("%s",&nam);
+  printf("\nEnter your password:");
+  scanf("%s",&pasword);
+  printf("\n1>Name:\n2>email\n3>number\n4>pasword:");
+  printf("%s %s %d %s",tmp1->name,tmp1->email,tmp1->number,tmp1->pas);
+  
+}
 int main()
 {
     int choice;
@@ -189,7 +203,7 @@ int main()
         break;
         
         case 4:view();
-        break;*/
+        break;
                 
     }
    
