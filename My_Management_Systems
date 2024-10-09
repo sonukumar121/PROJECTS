@@ -7,11 +7,90 @@ CALANDER
 ONLINE FOOD ORDER
 TO-DO-LIST
 MOBILE ORDER SYSTEM*/
-
-
-
 #include<stdio.h>
+#include<stdlib.h>
 int c=3,s=3;
+struct hospital()
+{
+    char name[50]; 
+    char city[50]; 
+    int beds; 
+    float price; 
+    float rating; 
+      
+};
+
+struct admitpatient()
+{
+    int age;
+    char names[30];
+    struct admitpatient *next;
+}*starts=NULL;
+
+void hospitaldata()
+{
+    int i;
+  struct hospital s[10];
+  for(i=1;i<=10;i++)
+  {
+     printf("\nEnter the Name of Hospital: ");
+     scanf("%s",&s[i].name);
+     printf("\nEnter City name:");
+     scanf("%s",&s[i].city);
+     printf("\nEnter the no.of beds:");
+     scanf("%d",&s[i].beds);
+     printf("\nEnter the price of beds");
+     scanf("%d",&s[i].price);
+     printf("\nEnter the rating out of 5star: ");
+     scanf("%d",&s[i].rating);
+     
+     
+  }
+  printf("\nAll the details of every hospitals:");
+  for(i=1;i<=10;i++)
+  {
+     printf("\nEnter the Name of Hospital: ");
+     scanf("%s",&s[i].name);
+     printf("\nEnter City name:");
+     scanf("%s",&s[i].city);
+     printf("\nEnter the no.of beds:");
+     scanf("%d",&s[i].beds);
+     printf("\nEnter the price of beds");
+     scanf("%d",&s[i].price);
+     printf("\nEnter the rating out of 5star: ");
+     scanf("%d",&s[i].rating);
+     
+     
+  }
+  
+}
+void admitpatient()
+{
+  struct admitpatient *tmp,*tmp1;
+  tmp=(struct node*)malloc(sizeof(struct admitpatient));
+  printf("\nEnter Patient Name: ");
+  scanf("%s",&tmp->name);
+  printf("\nEnter age: ");
+  scanf("%d",&tmp->age);
+  tmp->next=NULL;
+  if(starts==NULL)
+  {
+    starts=tmp;  
+  }
+  else
+  {
+  tmp1=starts;
+  while(tmp1->next!=NULL)
+  {
+      tmp1=tmp1->next;
+  }
+  tmp1->next=tmp;
+   }
+   
+}
+
+
+
 
 struct login
 {
@@ -199,7 +278,7 @@ int main()
     {
         
     printf("\n---------Login System-------");
-    printf("\n1>Sign up\n2>Login\n3>Edit\n4>View\n");
+    printf("\n1>Sign up\n2>Login\n3>Edit\n4>View\n5>check Hospital data in your city\n6>Give details for admit the patient:");
     printf("\nEnter your choice= ");
     scanf("%d",&choice);
     switch(choice)
@@ -216,6 +295,12 @@ int main()
         break;
         
         case 4:view();
+        break;
+        
+        case 5:hospitaldata();
+        break;
+        
+        case 6:admitpatient();
         break;
                 
     }
