@@ -10,7 +10,7 @@ MOBILE ORDER SYSTEM*/
 #include<stdio.h>
 #include<stdlib.h>
 int c=3,s=3;
-struct hospital()
+struct hospital
 {
     char name[50]; 
     char city[50]; 
@@ -27,13 +27,13 @@ struct admitpatient()
     struct admitpatient *next;
 }*starts=NULL;
 
-void hospitaldata()
+void hospitaldata( struct hospital s[])
 {
     int i;
-  struct hospital s[10];
-  for(i=1;i<=10;i++)
+ 
+  for(i=1;i<=3;i++)
   {
-     printf("\nEnter the Name of Hospital: ");
+     printf("Enter the Name of Hospital: ");
      scanf("%s",&s[i].name);
      printf("\nEnter City name:");
      scanf("%s",&s[i].city);
@@ -47,9 +47,9 @@ void hospitaldata()
      
   }
   printf("\nAll the details of every hospitals:");
-  for(i=1;i<=10;i++)
+  for(i=1;i<=3;i++)
   {
-     printf("\nEnter the Name of Hospital: ");
+     printf("Enter the Name of Hospital: ");
      scanf("%s",&s[i].name);
      printf("\nEnter City name:");
      scanf("%s",&s[i].city);
@@ -64,10 +64,35 @@ void hospitaldata()
   }
   
 }
-void admitpatient()
+
+void sortbed(struct admitpatient s[])
 {
+   int i;
+   struct hospital *bp;
+   
+}
+int main()
+{
+  case 1:struct hospital s[10];
+  hospitaldata(s); 
+  break;
+  
+  case 2:
+  struct admit s[10];
+  admit(s);
+  break;
+  
+  case 3:
+  sortbed();
+}
+void admit(struct admitpatient s[])
+{
+    int choose=1;
   struct admitpatient *tmp,*tmp1;
+  while(choose)
+  {
   tmp=(struct node*)malloc(sizeof(struct admitpatient));
+  
   printf("\nEnter Patient Name: ");
   scanf("%s",&tmp->name);
   printf("\nEnter age: ");
@@ -87,8 +112,11 @@ void admitpatient()
   tmp1->next=tmp;
    }
    
-}
 
+printf("\n1>for continue\n2>for exit:");
+scanf("%d",&choose);
+}
+}
 
 
 
